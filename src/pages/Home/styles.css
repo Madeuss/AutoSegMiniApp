@@ -1,3 +1,12 @@
+.background-opacity {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../../assets/pattern.png");
+  opacity: 0.5;
+  z-index: 0;
+}
+
 .home-container {
   width: 100%;
   height: 100vh;
