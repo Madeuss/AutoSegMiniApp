@@ -1,3 +1,4 @@
+//Span that is showed on error in form validation
 import styled from "styled-components"
 
 export const Span = styled.span`
