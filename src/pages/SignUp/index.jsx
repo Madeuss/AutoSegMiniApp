@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 import { Button } from "../../components/Button"
 import { Span } from "../../components/ErrorSpan"
@@ -28,6 +28,7 @@ const validationSchema = Yup.object({
 })
 
 export default function SignUp() {
+  const history = useHistory()
   const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues: {
       name: "",
@@ -37,6 +38,7 @@ export default function SignUp() {
     validationSchema,
     onSubmit(values) {
       console.log(values)
+      history.push("/profile")
     },
   })
 
@@ -94,11 +96,16 @@ export default function SignUp() {
               />
               {errors.password ? <Span>{errors.password}</Span> : null}
             </div>
-            <Link id="sign-btn">
-              <Button backgroundColor="#EF7734" fontColor="#F9F4C2">
-                Criar Conta
-              </Button>
-            </Link>
+            {/* <Link > */}
+            <Button
+              id="sign-btn"
+              backgroundColor="#EF7734"
+              fontColor="#F9F4C2"
+              type="submit"
+            >
+              Criar Conta
+            </Button>
+            {/* </Link> */}
           </form>
         </section>
       </div>
