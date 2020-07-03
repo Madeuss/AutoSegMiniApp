@@ -1,0 +1,26 @@
+.home-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f4c2;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-items: center;
+  z-index: 1;
+}
+
+.home-images-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 50px;
+  z-index: 2;
+}
+
+.home-buttons-section {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 7px;
+  z-index: 2;
+}
