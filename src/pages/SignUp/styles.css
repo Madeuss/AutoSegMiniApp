@@ -1,0 +1,95 @@
+@font-face {
+  font-family: SF-UL;
+  src: url("../../fonts/SF-Pro-Display-Ultralight.otf");
+}
+@font-face {
+  font-family: SF-RG;
+  src: url("../../fonts/SF-Pro-Display-Regular.otf");
+}
+
+.background-opacity {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../../assets/pattern.png");
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.signup-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f4c2;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  justify-items: center;
+  z-index: 1;
+}
+
+.signup-container #marca-img {
+  width: 250px;
+  z-index: 2;
+}
+
+.signup-section {
+  width: 550px;
+  height: 500px;
+  margin-top: 20px;
+  background-color: #f9f4c2;
+  z-index: 2;
+  display: grid;
+  grid-gap: 50px;
+  align-content: center;
+  justify-items: center;
+  padding-top: 30px;
+  position: relative;
+
+  box-shadow: 10px 18px 10px -5px #574437;
+}
+
+.signup-section #seta {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+
+.form-header {
+  display: grid;
+  justify-items: center;
+  grid-gap: 12px;
+  font-size: 1.2rem;
+  color: #574437;
+  font-family: SF-UL;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  align-content: center;
+  justify-items: center;
+}
+
+.signup-form .form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form .form-item input {
+  width: 100%;
+  height: 45px;
+  border: 0.25px solid #a3a3a3;
+  border-radius: 3px;
+  margin-top: 5px;
+  padding: 10px;
+  color: #574437;
+  font-family: SF-RG;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#sign-btn {
+  margin: 40px auto;
+}
