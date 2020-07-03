@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import { Button } from "../../components/Button"
 import "./styles.css"
@@ -18,12 +19,16 @@ export default function Home() {
         </section>
 
         <section className="home-buttons-section">
-          <Button backgroundColor="#EF7734" fontColor="#F9F4C2">
-            Criar Conta
-          </Button>
-          <Button backgroundColor="#D3CE3D" fontColor="#574437">
-            Entrar
-          </Button>
+          <Link to="/signup">
+            <Button backgroundColor="#EF7734" fontColor="#F9F4C2">
+              Criar Conta
+            </Button>
+          </Link>
+          <Link to="/login">
+            <Button backgroundColor="#D3CE3D" fontColor="#574437">
+              Entrar
+            </Button>
+          </Link>
         </section>
       </div>
     </>
