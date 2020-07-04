@@ -38,6 +38,7 @@ export default function SignUp() {
     validationSchema,
     onSubmit(values) {
       console.log(values)
+      localStorage.setItem("userName", values.name)
       history.push("/profile")
     },
   })
