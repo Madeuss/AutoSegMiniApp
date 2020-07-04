@@ -1,0 +1,11 @@
+@font-face {
+  font-family: SF-UL;
+  src: url("../../fonts/SF-Pro-Display-Ultralight.otf");
+}
+@font-face {
+  font-family: SF-RG;
+  src: url("../../fonts/SF-Pro-Display-Regular.otf");
+}
+#profile-marca-img {
+  width: 200px;
+}
