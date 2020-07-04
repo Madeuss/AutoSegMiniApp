@@ -1,10 +1,10 @@
 //Span that is showed on error in form validation
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Nav = styled.header`
-
   background-color: #574437;
   height: 100px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -17,8 +17,8 @@ export const Nav = styled.header`
   p {
     margin-left: 15px;
     text-transform: Capitalize;
-    color: #F9F4C2;
+    color: #f9f4c2;
     font-family: SF-UL;
     font-size: 20px;
   }
-`;
+`
