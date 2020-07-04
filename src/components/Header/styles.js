@@ -7,8 +7,7 @@ export const Nav = styled.header`
   height: 100px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 200px 0 200px;
+  justify-content: space-around;
 
   section {
     display: flex;
