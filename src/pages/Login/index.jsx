@@ -1,16 +1,16 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react"
+import { Link, useHistory } from "react-router-dom"
 
-import { Button } from "../../components/Button";
-import { Span } from "../../components/ErrorSpan";
-import "./styles.css";
+import { Button } from "../../components/Button"
+import { Span } from "../../components/ErrorSpan"
+import "./styles.css"
 
 //Assets
-import marca from "../../assets/marca_mini_app.png";
-import backarrow from "../../assets/seta.png";
+import marca from "../../assets/marca_mini_app.png"
+import backarrow from "../../assets/seta.png"
 
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
 //Yup form validation schema
 const validationSchema = Yup.object({
@@ -22,10 +22,10 @@ const validationSchema = Yup.object({
   password: Yup.string()
     .required("Write your password that I hope isn't your name")
     .min(6, "Hmm, try again with 6/more characters"),
-});
+})
 
 export default function Login() {
-  const history = useHistory();
+  const history = useHistory()
   // const [name, setName] = useState("");
   const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues: {
@@ -34,11 +34,11 @@ export default function Login() {
     },
     validationSchema,
     onSubmit(values) {
-      console.log(values);
-      localStorage.setItem("userName", values.name);
-      history.push("/profile");
+      console.log(values)
+      localStorage.setItem("userName", values.name)
+      history.push("/profile")
     },
-  });
+  })
 
   return (
     <>
@@ -93,5 +93,5 @@ export default function Login() {
         </section>
       </div>
     </>
-  );
+  )
 }
