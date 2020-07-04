@@ -6,6 +6,165 @@
   font-family: SF-RG;
   src: url("../../fonts/SF-Pro-Display-Regular.otf");
 }
+
 #profile-marca-img {
   width: 200px;
+}
+
+.profile-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.todo-section {
+  width: 650px;
+}
+
+#new-list-div {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  font-family: SF-UL;
+  font-size: 1.4em;
+  height: 22px;
+  color: #574437;
+}
+
+.todo-list {
+  margin-top: 20px;
+  border: 0.25px solid #b4d9cb;
+  border-radius: 5px;
+  list-style-type: none;
+}
+
+.todo-list .list-item {
+  display: grid;
+  border: 0.25px solid #b4d9cb;
+}
+
+.todo-list li .lista-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#list-title-sec {
+  display: flex;
+  padding: 15px;
+  text-transform: capitalize;
+}
+
+#list-btns-sec {
+  display: flex;
+  padding: 15px;
+}
+
+#list-title-sec p {
+  font-size: 1.2em;
+  margin-left: 10px;
+  font-family: SF-RG;
+  color: #574437;
+}
+
+#list-btns-sec span {
+  margin-left: 10px;
+}
+
+.todo-list li .tarefa-container {
+  display: grid;
+  justify-items: center;
+}
+
+.todo-list li .tarefa-container .input-group {
+  border: 1px solid #ef7734;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.todo-list li .tarefa-container .input-group input {
+  width: 500px;
+  height: 35px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 1.1em;
+  border: none;
+  font-family: SF-RG;
+  color: #574437;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section {
+  width: 100%;
+  padding-left: 60px;
+  border: none;
+  list-style-type: none;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .tarefa-item {
+  border-bottom: 2px solid #b4d9cb;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3em;
+  font-family: SF-RG;
+  color: #574437;
+  padding-right: 40px;
+}
+.todo-list
+  li
+  .tarefa-container
+  .tarefa-list-section
+  .tarefa-item
+  .tarefa-name-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .tarefa-item p {
+  margin-left: 10px;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .subtarefas-div {
+  width: calc(100% - 56px);
+  padding-left: 20px;
+  margin: 15px;
+  list-style-type: none;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .subtarefas-div li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .subtarefas-div li div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-list li .tarefa-container .tarefa-list-section .subtarefas-div li div p {
+  font-family: SF-RG;
+  color: #574437;
+  margin-left: 10px;
+}
+
+.todo-list
+  li
+  .tarefa-container
+  .tarefa-list-section
+  .subtarefas-div
+  #subtarefa-input-group {
+  margin-top: 15px;
 }
