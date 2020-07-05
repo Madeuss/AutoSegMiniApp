@@ -79,6 +79,9 @@
   display: grid;
   justify-items: center;
 }
+.todo-list li .tarefa-container #list-taskinput {
+  margin-left: 20px;
+}
 
 .todo-list li .tarefa-container .input-group {
   border: 1px solid #ef7734;
@@ -167,4 +170,22 @@
   .subtarefas-div
   #subtarefa-input-group {
   margin-top: 15px;
+}
+
+input[type="checkbox"] {
+  all: unset;
+  border: 0.25px solid #b4d9cb;
+  border-radius: 4px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input:checked {
+  background-image: url("../../assets/checked_icon.svg");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #ef7734;
 }
