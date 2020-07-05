@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+
+import { useSelector, useDispatch } from "react-redux"
+import { deleteTodo, addTask } from "../../store/todoList"
 
 import Header from "../../components/Header"
 import { TaskInput } from "../../components/TaskInput"
@@ -13,6 +16,24 @@ import delete_icon from "../../assets/icone_deletar_lista.png"
 import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
 
 export default function Profile() {
+  const dispatch = useDispatch()
+  const todoList = useSelector((state) => state.todoReducer)
+  const [task, setTask] = useState({})
+
+  const handleInputChange = (event) => {
+    const target = event.target
+    const name = target.name
+    setTask({ ...task, [name]: event.target.value })
+  }
+
+  const addTask = (e, titleTask, todoId) => {
+    // e.preventDefault()
+
+    console.log(todoId, titleTask)
+    dispatch(addTask(titleTask, todoId))
+    setTask({})
+  }
+
   return (
     <>
       <Header id="profile-header" />
@@ -25,120 +46,95 @@ export default function Profile() {
             </Link>
           </div>
           <ul className="todo-list">
-            <li className="list-item">
-              <div className="lista-div" id="lista1">
-                <section id="list-title-sec">
-                  <img src={list_icon} alt="List icon" />
-                  <p>Lista 1</p>
-                </section>
-                <section id="list-btns-sec">
-                  <span>
-                    <img src={edit_icon} alt="Edit icon" />
-                  </span>
-                  <span>
-                    <img src={delete_icon} alt="Delete icon" />
-                  </span>
-                </section>
-              </div>
-            </li>
-            <li className="list-item">
-              <div className="lista-div" id="lista2">
-                <section id="list-title-sec">
-                  <img src={list_icon} alt="List icon" />
-                  <p>Lista 2</p>
-                </section>
-                <section id="list-btns-sec">
-                  <span>
-                    <img src={edit_icon} alt="Edit icon" />
-                  </span>
-                  <span>
-                    <img src={delete_icon} alt="Delete icon" />
-                  </span>
-                </section>
-              </div>
-              <ul className="tarefa-container">
-                <TaskInput id="list-taskinput">
-                  <input type="text" placeholder="Adicionar tarefa" />
-                  <img src={new_item} alt="new task icon" />
-                </TaskInput>
-                <li className="tarefa-list-section">
-                  <div className="tarefa-item">
-                    <div className="tarefa-name-div">
-                      <input type="checkbox" name="tarefa" id="check-tarefa1" />
-                      <p>Tarefa 1</p>
-                    </div>
+            {todoList.map((todo) => (
+              <li key={todo.id} className="list-item">
+                <div className="lista-div" id="lista2">
+                  <section id="list-title-sec">
+                    <img src={list_icon} alt="List icon" />
+                    <p>{todo.list}</p>
+                  </section>
+                  <section id="list-btns-sec">
                     <span>
-                      <img src={delete_tarefa} alt="Delete icon" />
+                      <img src={edit_icon} alt="Edit icon" />
                     </span>
-                  </div>
-                  <ul className="subtarefas-div">
-                    <li>
-                      <div className="subtarefa-name-div">
-                        <input
-                          type="checkbox"
-                          name="tarefa"
-                          id="check-tarefa1"
-                        />
-                        <p>Subtarefa 1</p>
+                    <span>
+                      <img
+                        src={delete_icon}
+                        alt="Delete icon"
+                        onClick={() => dispatch(deleteTodo(todo.id))}
+                      />
+                    </span>
+                  </section>
+                </div>
+
+                <ul className="tarefa-container">
+                  <form onSubmit={(e) => addTask(e, task[todo.list], todo.id)}>
+                    <TaskInput id="list-taskinput">
+                      <input
+                        name={todo.list}
+                        value={task[todo.list]}
+                        onChange={(e) => handleInputChange(e)}
+                        type="text"
+                        placeholder="Adicionar tarefa"
+                      />
+                      <label htmlFor={todo.list}>
+                        <img id={todo.id} src={new_item} alt="new task icon" />
+                      </label>
+                      <button
+                        id={todo.list}
+                        style={{ display: "none" }}
+                        type="submit"
+                      ></button>
+                    </TaskInput>
+                  </form>
+
+                  {todo.task.map((task) => (
+                    <li key={todo.task.id} className="tarefa-list-section">
+                      <div className="tarefa-item">
+                        <div className="tarefa-name-div">
+                          <input
+                            type="checkbox"
+                            name="tarefa"
+                            id="check-tarefa1"
+                          />
+                          <p>{task.title}</p>
+                        </div>
+                        <span>
+                          <img src={delete_tarefa} alt="Delete icon" />
+                        </span>
                       </div>
 
-                      <span>
-                        <img src={delete_tarefa} alt="Delete icon" />
-                      </span>
-                    </li>
-                    <li>
-                      <div className="subtarefa-name-div">
-                        <input
-                          type="checkbox"
-                          name="tarefa"
-                          id="check-tarefa2"
-                        />
-                        <p>Subtarefa 2</p>
-                      </div>
+                      <ul className="subtarefas-div">
+                        {task.subtask.map((subtask) => (
+                          <li>
+                            <div className="subtarefa-name-div">
+                              <input
+                                type="checkbox"
+                                name="tarefa"
+                                id="check-tarefa1"
+                              />
+                              <p>Subtarefa 1</p>
+                            </div>
 
-                      <span>
-                        <img src={delete_tarefa} alt="Delete icon" />
-                      </span>
-                    </li>
-                    <li>
-                      <div className="subtarefa-name-div">
-                        <input
-                          type="checkbox"
-                          name="tarefa"
-                          id="check-tarefa3"
-                        />
-                        <p>Subtarefa 3</p>
-                      </div>
+                            <span>
+                              <img src={delete_tarefa} alt="Delete icon" />
+                            </span>
+                          </li>
+                        ))}
 
-                      <span>
-                        <img src={delete_tarefa} alt="Delete icon" />
-                      </span>
+                        <div className="input-group" id="subtarefa-input-group">
+                          <input
+                            type="text"
+                            placeholder="Adicionar subtarefa"
+                          />
+                          <img src={new_item} alt="new task icon" />
+                        </div>
+                      </ul>
                     </li>
-
-                    <div className="input-group" id="subtarefa-input-group">
-                      <input type="text" placeholder="Adicionar subtarefa" />
-                      <img src={new_item} alt="new task icon" />
-                    </div>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li className="list-item">
-              <div className="lista-div" id="lista3">
-                <section id="list-title-sec">
-                  <img src={list_icon} alt="" />
-                  <p>Lista 3</p>
-                </section>
-                <section id="list-btns-sec">
-                  <span>
-                    <img src={edit_icon} alt="Edit" />
-                  </span>
-                  <span>
-                    <img src={delete_icon} alt="Edit" />
-                  </span>
-                </section>
-              </div>
-            </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
           </ul>
         </section>
       </div>
