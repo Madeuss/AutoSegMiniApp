@@ -1,0 +1,30 @@
+.newlist-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.newlist-form {
+  width: 650px;
+  margin-top: 20px;
+}
+
+.newlist-form input {
+  width: 100%;
+  height: 35px;
+  padding: 10px;
+  font-size: 1.1em;
+  font-family: SF-RG;
+  color: #574437;
+  border: 1px solid #ef7734;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 10px; */
+}
