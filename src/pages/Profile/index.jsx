@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import Header from "../../components/Header"
 import TaskInput from "../../components/TaskInput"
@@ -11,14 +12,17 @@ import edit_icon from "../../assets/icone_editar.png"
 import delete_icon from "../../assets/icone_deletar_lista.png"
 import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
 
-function Profile() {
+export default function Profile() {
   return (
     <>
       <Header id="profile-header" />
       <div className="profile-container">
         <section className="todo-section">
           <div id="new-list-div">
-            <h1>Listas</h1> <img src={new_item} alt="new list icon" />
+            <h1>Listas</h1>
+            <Link to="/list/new">
+              <img src={new_item} alt="new list icon" />
+            </Link>
           </div>
           <ul className="todo-list">
             <li className="list-item">
@@ -138,5 +142,3 @@ function Profile() {
     </>
   )
 }
-
-export default Profile
