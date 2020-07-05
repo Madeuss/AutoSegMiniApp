@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 import Header from "../../components/Header"
-import TaskInput from "../../components/TaskInput"
+import { TaskInput } from "../../components/TaskInput"
 
 import "./styles.css"
 
@@ -57,7 +57,10 @@ export default function Profile() {
                 </section>
               </div>
               <ul className="tarefa-container">
-                <TaskInput />
+                <TaskInput id="list-taskinput">
+                  <input type="text" placeholder="Adicionar tarefa" />
+                  <img src={new_item} alt="new task icon" />
+                </TaskInput>
                 <li className="tarefa-list-section">
                   <div className="tarefa-item">
                     <div className="tarefa-name-div">

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Button = styled.button`
-  height: 40px;
+  height: 45px;
   width: 250px;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor};
@@ -9,4 +9,7 @@ export const Button = styled.button`
   border: none;
   font-size: 16px;
   cursor: pointer;
+
+  /* margin to buttons with flex display (side by side) */
+  margin-left: ${(props) => `${props.marginLeft}px`};
 `

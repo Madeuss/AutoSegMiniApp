@@ -1,7 +1,8 @@
 import React from "react"
 
 import Header from "../../components/Header"
-import TaskInput from "../../components/TaskInput"
+import { TaskInput } from "../../components/TaskInput"
+import { Button } from "../../components/Button"
 
 import "./styles.css"
 
@@ -22,11 +23,29 @@ export default function NewList() {
           </div>
         </section>
 
-        <setion className="newlist-form">
-          <input type="text" placeholder="Digite o nome da lista" />
-          <br />
-          <TaskInput />
-        </setion>
+        <form className="newlist-form">
+          <section className="form-inputs-section">
+            <input type="text" placeholder="Digite o nome da lista" />
+            <br />
+            <TaskInput id="taskinput">
+              <input type="text" placeholder="Adicionar tarefa" />
+              <img src={new_item} alt="new task icon" />
+            </TaskInput>
+          </section>
+          <section className="form-buttons-section">
+            <Button backgroundColor="#D3CE3D" fontColor="#574437">
+              Cancelar
+            </Button>
+            <Button
+              backgroundColor="#EF7734"
+              fontColor="#F9F4C2"
+              marginLeft={20}
+            >
+              Criar Lista
+            </Button>
+          </section>
+        </form>
+        <section className="list-just-created"> </section>
       </div>
     </>
   )
