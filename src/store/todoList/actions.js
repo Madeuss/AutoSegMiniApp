@@ -11,7 +11,7 @@ const addTask = (task, id) => {
     payload: {
       id,
       task: {
-        id: 2,
+        id: Math.floor(Math.random() * 100),
         title: task,
         completed: false,
         subtask: [],
@@ -19,5 +19,5 @@ const addTask = (task, id) => {
     },
   }
 }
-// id: Math.floor(Math.random() * 1000)
+
 export { deleteTodo, addTask }
