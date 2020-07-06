@@ -9,7 +9,7 @@ export const TaskInput = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-right: 10px;
-  width: calc(100% - 100px);
+  width: 100%;
 
   input {
     width: 500px;
