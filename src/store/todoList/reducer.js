@@ -1,29 +1,29 @@
 const INITIAL_STATE = [
   {
-    id: 1,
+    id: "1",
     list: "list 1",
     task: [
       {
-        id: "11",
+        id: "1",
         title: "task 1",
         completed: true,
-        subtask: [{ id: "111", title: "Subtask 1", completed: true }],
+        subtask: [{ id: "1", title: "Subtask 1", completed: true }],
       },
     ],
   },
   {
-    id: 2,
+    id: "2",
     list: "list 2",
     task: [
       {
-        id: "21",
+        id: "2",
         title: "task 2",
         completed: false,
-        subtask: [{ id: "211", title: "Subtask 2", completed: false }],
+        subtask: [{ id: "2", title: "Subtask 2", completed: false }],
       },
     ],
   },
-  { id: 3, list: "list 3", task: [] },
+  { id: "3", list: "list 3", task: [] },
 ]
 
 const todoReducer = (state = INITIAL_STATE, action) => {
