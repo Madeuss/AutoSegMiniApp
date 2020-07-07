@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
@@ -152,9 +152,7 @@ export default function Profile() {
                           <img
                             src={delete_tarefa}
                             alt="Delete icon"
-                            onClick={() =>
-                              dispatch(deleteTask(todo.id, task.id))
-                            }
+                            onClick={() => dispatch(deleteTask("1", "1"))}
                           />
                         </span>
                       </div>

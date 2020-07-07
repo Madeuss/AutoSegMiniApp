@@ -4,15 +4,21 @@ import Header from "../../components/Header"
 import { TaskInput } from "../../components/TaskInput"
 import { Button } from "../../components/Button"
 
+import { useSelector, useDispatch } from "react-redux"
+import { addTodo } from "../../store/todoList"
+
 import "./styles.css"
 
 import new_item from "../../assets/botao_adicionar.png"
-import list_icon from "../../assets/icone_lista.png"
-import edit_icon from "../../assets/icone_editar.png"
-import delete_icon from "../../assets/icone_deletar_lista.png"
-import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
+// import list_icon from "../../assets/icone_lista.png"
+// import edit_icon from "../../assets/icone_editar.png"
+// import delete_icon from "../../assets/icone_deletar_lista.png"
+// import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
 
 export default function NewList() {
+  const dispatch = useDispatch()
+  const todoList = useSelector((state) => state.todoReducer)
+
   return (
     <>
       <Header id="newlist-header" />
