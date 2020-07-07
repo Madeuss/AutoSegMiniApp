@@ -45,9 +45,12 @@
 .todo-list .list-item {
   display: grid;
   border: 0.25px solid #b4d9cb;
-  padding-bottom: 20px;
+  padding: 10px 0 10px 0;
 }
-
+.todo-list .list-item:hover {
+  background: #e0e0e0;
+  transition: 0.3s;
+}
 .todo-list li .lista-div {
   display: flex;
   align-items: center;
@@ -64,6 +67,11 @@
   display: flex;
   padding: 15px;
 }
+#list-icon,
+#list-btns-sec #edit-list-icon,
+#delete-list-icon {
+  cursor: pointer;
+}
 
 #list-title-sec p {
   font-size: 1.2em;
@@ -77,9 +85,10 @@
 }
 
 .todo-list li .tarefa-container {
-  display: grid;
+  padding-top: 20px;
   justify-items: center;
 }
+
 .todo-list li .tarefa-container #list-taskinput {
   margin-left: 10px;
 }

@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react"
+import React, { useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux"
-import { deleteTodo, addTask } from "../../store/todoList"
+import {
+  deleteTodo,
+  addTask,
+  deleteTask,
+  addSubTask,
+} from "../../store/todoList"
 
 import Header from "../../components/Header"
 import { TaskInput } from "../../components/TaskInput"
@@ -16,22 +21,46 @@ import delete_icon from "../../assets/icone_deletar_lista.png"
 import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
 
 export default function Profile() {
+  const [todoActive, setTodoActive] = useState(false)
+
   const dispatch = useDispatch()
   const todoList = useSelector((state) => state.todoReducer)
   const [task, setTask] = useState({})
+  const [subTask, setSubTask] = useState({})
+
+  function handlePushAccordion(index) {
+    let accordion = todoActive === index ? false : index
+    setTodoActive(accordion)
+  }
+
+  function display(index) {
+    return todoActive === index ? "grid" : "none"
+  }
 
   const handleInputChange = (event) => {
     const target = event.target
     const name = target.name
     setTask({ ...task, [name]: event.target.value })
   }
-
-  const addTask = (e, titleTask, todoId) => {
-    // e.preventDefault()
+  const addTask_ = (e, titleTask, todoId, taskName) => {
+    e.preventDefault()
 
     console.log(todoId, titleTask)
     dispatch(addTask(titleTask, todoId))
-    setTask({})
+    setTask({ ...task, [taskName]: "" })
+  }
+
+  const handleSubInputChange = (event) => {
+    const subtarget = event.target
+    const subname = subtarget.name
+    setSubTask({ ...subTask, [subname]: event.target.value })
+  }
+  const addSubTask_ = (e, titleSubTask, todoId, taskId, subTaskName) => {
+    e.preventDefault()
+
+    console.log(todoId, titleSubTask)
+    dispatch(addSubTask(titleSubTask, todoId, taskId))
+    setSubTask({ ...subTask, [subTaskName]: "" })
   }
 
   return (
@@ -46,29 +75,47 @@ export default function Profile() {
             </Link>
           </div>
           <ul className="todo-list">
-            {todoList.map((todo) => (
+            {todoList.map((todo, index) => (
               <li key={todo.id} className="list-item">
-                <div className="lista-div" id="lista2">
+                <div className="lista-div">
                   <section id="list-title-sec">
-                    <img src={list_icon} alt="List icon" />
+                    <img
+                      src={list_icon}
+                      alt="List icon"
+                      onClick={() => handlePushAccordion(index)}
+                      id="list-icon"
+                    />
                     <p>{todo.list}</p>
                   </section>
                   <section id="list-btns-sec">
                     <span>
-                      <img src={edit_icon} alt="Edit icon" />
+                      <img
+                        src={edit_icon}
+                        alt="Edit icon"
+                        onClick={() => handlePushAccordion(index)}
+                        id="edit-list-icon"
+                      />
                     </span>
                     <span>
                       <img
                         src={delete_icon}
                         alt="Delete icon"
                         onClick={() => dispatch(deleteTodo(todo.id))}
+                        id="delete-list-icon"
                       />
                     </span>
                   </section>
                 </div>
 
-                <ul className="tarefa-container">
-                  <form onSubmit={(e) => addTask(e, task[todo.list], todo.id)}>
+                <ul
+                  className="tarefa-container"
+                  style={{ display: display(index) }}
+                >
+                  <form
+                    onSubmit={(e) =>
+                      addTask_(e, task[todo.list], todo.id, todo.list)
+                    }
+                  >
                     <TaskInput id="list-taskinput">
                       <input
                         name={todo.list}
@@ -76,6 +123,7 @@ export default function Profile() {
                         onChange={(e) => handleInputChange(e)}
                         type="text"
                         placeholder="Adicionar tarefa"
+                        required
                       />
                       <label htmlFor={todo.list}>
                         <img id={todo.id} src={new_item} alt="new task icon" />
@@ -88,8 +136,9 @@ export default function Profile() {
                     </TaskInput>
                   </form>
 
+                  {/* TASK MAP */}
                   {todo.task.map((task) => (
-                    <li key={todo.task.id} className="tarefa-list-section">
+                    <li key={task.id} className="tarefa-list-section">
                       <div className="tarefa-item">
                         <div className="tarefa-name-div">
                           <input
@@ -100,7 +149,13 @@ export default function Profile() {
                           <p>{task.title}</p>
                         </div>
                         <span>
-                          <img src={delete_tarefa} alt="Delete icon" />
+                          <img
+                            src={delete_tarefa}
+                            alt="Delete icon"
+                            onClick={() =>
+                              dispatch(deleteTask(todo.id, task.id))
+                            }
+                          />
                         </span>
                       </div>
 
@@ -123,11 +178,38 @@ export default function Profile() {
                         ))}
 
                         <div className="input-group" id="subtarefa-input-group">
-                          <input
-                            type="text"
-                            placeholder="Adicionar subtarefa"
-                          />
-                          <img src={new_item} alt="new task icon" />
+                          <form
+                            onSubmit={(e) =>
+                              addSubTask_(
+                                e,
+                                subTask[task.title],
+                                todo.id,
+                                task.id,
+                                task.title
+                              )
+                            }
+                          >
+                            <input
+                              name={task.title}
+                              value={subTask[task.title]}
+                              onChange={(e) => handleSubInputChange(e)}
+                              type="text"
+                              placeholder="Adicionar subtarefa"
+                              required
+                            />
+                            <label htmlFor={task.title}>
+                              <img
+                                id={task.id}
+                                src={new_item}
+                                alt="new task icon"
+                              />
+                            </label>
+                            <button
+                              id={task.title}
+                              style={{ display: "none" }}
+                              type="submit"
+                            ></button>
+                          </form>
                         </div>
                       </ul>
                     </li>
