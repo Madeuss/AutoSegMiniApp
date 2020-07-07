@@ -69,4 +69,36 @@ const deleteSubTask = (todoId, taskId, subTaskId) => {
   }
 }
 
-export { addTodo, deleteTodo, addTask, deleteTask, addSubTask, deleteSubTask }
+const toogleTask = (todoId, taskId, checked) => {
+  return {
+    type: "TOOGLE_TASK",
+    payload: {
+      todoId,
+      taskId,
+      checked,
+    },
+  }
+}
+const toogleSubTask = (todoId, taskId, subtaskId, checked, count) => {
+  return {
+    type: "TOOGLE_SUBTASK",
+    payload: {
+      todoId,
+      taskId,
+      subtaskId,
+      checked,
+      count,
+    },
+  }
+}
+
+export {
+  addTodo,
+  deleteTodo,
+  addTask,
+  deleteTask,
+  addSubTask,
+  deleteSubTask,
+  toogleTask,
+  toogleSubTask,
+}
