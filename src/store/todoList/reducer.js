@@ -59,6 +59,25 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+    case "ADD_SUBTASK":
+      return state.map((todo) => {
+        if (todo.id === action.payload.todoId) {
+          return {
+            ...todo,
+            task: todo.task.map((task_) => {
+              if (task_.id === action.payload.taskId) {
+                return {
+                  ...task_,
+                  subtask: [...task_.subtask, action.payload.subtask],
+                  completed: false,
+                }
+              }
+              return task_
+            }),
+          }
+        }
+        return todo
+      })
 
     default:
       return state
