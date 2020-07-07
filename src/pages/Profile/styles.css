@@ -27,7 +27,7 @@
 
 #new-list-div {
   display: flex;
-  align-content: center;
+  align-items: center;
   justify-content: space-between;
   font-family: SF-UL;
   font-size: 1.4em;
@@ -36,7 +36,7 @@
 }
 
 .todo-list {
-  margin-top: 20px;
+  margin: 20px auto 20px auto;
   border: 0.25px solid #b4d9cb;
   border-radius: 5px;
   list-style-type: none;
@@ -46,10 +46,12 @@
   display: grid;
   border: 0.25px solid #b4d9cb;
   padding: 10px 0 10px 0;
+  transition: 0.6s ease;
+  background-color: #fff;
 }
 .todo-list .list-item:hover {
   background: #e0e0e0;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 .todo-list li .lista-div {
   display: flex;
@@ -92,6 +94,10 @@
 .todo-list li .tarefa-container #list-taskinput {
   margin-left: 10px;
 }
+.todo-list li .tarefa-container #list-taskinput label {
+  display: flex;
+  align-items: center;
+}
 
 .todo-list li .tarefa-container .input-group {
   border: 1px solid #ef7734;
@@ -102,9 +108,8 @@
   justify-content: space-between;
   padding-right: 10px;
 }
-
 .todo-list li .tarefa-container .input-group input {
-  width: 500px;
+  width: 430px;
   height: 35px;
   padding: 10px;
   border-radius: 4px;
@@ -112,6 +117,9 @@
   border: none;
   font-family: SF-RG;
   color: #574437;
+}
+.todo-list li .tarefa-container .input-group label {
+  display: flex;
 }
 
 .todo-list li .tarefa-container .tarefa-list-section {
@@ -184,7 +192,7 @@
 
 input[type="checkbox"] {
   all: unset;
-  border: 0.25px solid #b4d9cb;
+  border: 1px solid #b4d9cb;
   border-radius: 4px;
   width: 15px;
   height: 15px;
@@ -198,4 +206,8 @@ input:checked {
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #ef7734;
+}
+
+img {
+  cursor: pointer;
 }
