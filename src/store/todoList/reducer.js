@@ -78,6 +78,26 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+    case "DELETE_SUBTASK":
+      return state.map((todo) => {
+        if (todo.id === action.payload.todoId) {
+          return {
+            ...todo,
+            task: todo.task.map((task_) => {
+              if (task_.id === action.payload.taskId) {
+                return {
+                  ...task_,
+                  subtask: task_.subtask.filter(
+                    (subtask_) => subtask_.id !== action.payload.subTaskId
+                  ),
+                }
+              }
+              return task_
+            }),
+          }
+        }
+        return todo
+      })
 
     default:
       return state
