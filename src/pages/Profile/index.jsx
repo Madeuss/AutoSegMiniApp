@@ -7,6 +7,9 @@ import {
   addTask,
   deleteTask,
   addSubTask,
+  deleteSubTask,
+  toogleTask,
+  toogleSubTask,
 } from "../../store/todoList"
 
 import Header from "../../components/Header"
@@ -36,6 +39,9 @@ export default function Profile() {
   function display(index) {
     return todoActive === index ? "grid" : "none"
   }
+  function backcolor(index) {
+    return todoActive === index ? "#e0e0e0" : "#fff"
+  }
 
   const handleInputChange = (event) => {
     const target = event.target
@@ -63,6 +69,25 @@ export default function Profile() {
     setSubTask({ ...subTask, [subTaskName]: "" })
   }
 
+  const handleCheckbox = (todoId, taskId, subtaskId, checked) => {
+    const todo = todoList.filter((todo_) => todo_.id === todoId)
+    const tasks = todo.filter((task) => task.id === taskId)
+
+    let count = 0
+    tasks.forEach((task) => {
+      task.subtask.forEach((subtask) => {
+        if (subtask.checked) {
+          count += 1
+        }
+      })
+    })
+    if (checked) {
+      count += 1
+    }
+
+    dispatch(toogleSubTask(todoId, taskId, subtaskId, checked, count))
+  }
+
   return (
     <>
       <Header id="profile-header" />
@@ -76,7 +101,11 @@ export default function Profile() {
           </div>
           <ul className="todo-list">
             {todoList.map((todo, index) => (
-              <li key={todo.id} className="list-item">
+              <li
+                key={todo.id}
+                className="list-item"
+                style={{ backgroundColor: backcolor(index) }}
+              >
                 <div className="lista-div">
                   <section id="list-title-sec">
                     <img
@@ -145,6 +174,12 @@ export default function Profile() {
                             type="checkbox"
                             name="tarefa"
                             id="check-tarefa1"
+                            onChange={(e) =>
+                              dispatch(
+                                toogleTask(todo.id, task.id, e.target.checked)
+                              )
+                            }
+                            checked={task.completed}
                           />
                           <p>{task.title}</p>
                         </div>
@@ -152,7 +187,9 @@ export default function Profile() {
                           <img
                             src={delete_tarefa}
                             alt="Delete icon"
-                            onClick={() => dispatch(deleteTask("1", "1"))}
+                            onClick={() =>
+                              dispatch(deleteTask(todo.id, task.id))
+                            }
                           />
                         </span>
                       </div>
@@ -164,28 +201,47 @@ export default function Profile() {
                               <input
                                 type="checkbox"
                                 name="tarefa"
-                                id="check-tarefa1"
+                                id="check-tarefa"
+                                onChange={(e) =>
+                                  handleCheckbox(
+                                    todo.id,
+                                    task.id,
+                                    subtask.id,
+                                    e.target.checked
+                                  )
+                                }
+                                checked={subtask.completed}
                               />
-                              <p>Subtarefa 1</p>
+                              <p>{subtask.title}</p>
                             </div>
 
                             <span>
-                              <img src={delete_tarefa} alt="Delete icon" />
+                              <img
+                                src={delete_tarefa}
+                                alt="Delete icon"
+                                onClick={() =>
+                                  dispatch(
+                                    deleteSubTask(todo.id, task.id, subtask.id)
+                                  )
+                                }
+                              />
                             </span>
                           </li>
                         ))}
-
-                        <div className="input-group" id="subtarefa-input-group">
-                          <form
-                            onSubmit={(e) =>
-                              addSubTask_(
-                                e,
-                                subTask[task.title],
-                                todo.id,
-                                task.id,
-                                task.title
-                              )
-                            }
+                        <form
+                          onSubmit={(e) =>
+                            addSubTask_(
+                              e,
+                              subTask[task.title],
+                              todo.id,
+                              task.id,
+                              task.title
+                            )
+                          }
+                        >
+                          <div
+                            className="input-group"
+                            id="subtarefa-input-group"
                           >
                             <input
                               name={task.title}
@@ -207,8 +263,8 @@ export default function Profile() {
                               style={{ display: "none" }}
                               type="submit"
                             ></button>
-                          </form>
-                        </div>
+                          </div>
+                        </form>
                       </ul>
                     </li>
                   ))}

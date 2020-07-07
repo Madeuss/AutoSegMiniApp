@@ -98,7 +98,59 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+    case "TOOGLE_TASK":
+      return state.map((todo) => {
+        if (todo.id === action.payload.todoId) {
+          return {
+            ...todo,
+            task: todo.task.map((task_) => {
+              if (task_.id === action.payload.taskId) {
+                return {
+                  ...task_,
+                  subtask: task_.subtask.map((subtask_) => {
+                    return { ...subtask_, completed: action.payload.checked }
+                  }),
+                  completed: action.payload.checked,
+                }
+              }
+              return task_
+            }),
+          }
+        }
+        return todo
+      })
 
+    case "TOOGLE_SUBTASK":
+      console.log(action.payload.count)
+      return state.map((todo) => {
+        if (todo.id === action.payload.todoId) {
+          return {
+            ...todo,
+            task: todo.task.map((task_) => {
+              if (task_.id === action.payload.taskId) {
+                return {
+                  ...task_,
+                  subtask: task_.subtask.map((subtask_) => {
+                    if (subtask_.id === action.payload.subtaskId) {
+                      return {
+                        ...subtask_,
+                        completed: action.payload.checked,
+                      }
+                    }
+                    return subtask_
+                  }),
+                  completed:
+                    task_.subtask.length === action.payload.count
+                      ? true
+                      : false,
+                }
+              }
+              return task_
+            }),
+          }
+        }
+        return todo
+      })
     default:
       return state
   }
