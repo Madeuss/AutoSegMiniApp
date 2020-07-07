@@ -1,19 +1,19 @@
 const INITIAL_STATE = [
   {
     id: "1",
-    list: "list 1",
+    list: "List 1",
     task: [
       {
         id: "1",
         title: "task 1",
         completed: true,
-        subtask: [{ id: "1", title: "Subtask 1", completed: true }],
+        subtask: [{ id: "1", title: "Subtask 1", completed: false }],
       },
     ],
   },
   {
     id: "2",
-    list: "list 2",
+    list: "List 2",
     task: [
       {
         id: "2",
@@ -23,18 +23,18 @@ const INITIAL_STATE = [
       },
     ],
   },
-  { id: "3", list: "list 3", task: [] },
+  { id: "3", list: "List 3", task: [] },
 ]
 
 const todoReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "ADD_TODO":
-      return state.map((todo) => {
-        return {
-          ...state,
-          todo: [...todo, action.payload],
-        }
-      })
+    // case "ADD_TODO":
+    //   return state.map((todo) => {
+    //     return {
+    //       ...state,
+    //       todo: [...todo, action.payload.todo],
+    //     }
+    //   })
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.payload)
     case "ADD_TASK":
@@ -49,27 +49,13 @@ const todoReducer = (state = INITIAL_STATE, action) => {
       })
     case "DELETE_TASK":
       return state.map((todo) => {
-        if (todo.id == action.payload.todoId) {
-          return todo.task.filter((task_) => task_.id != action.payload.taskId)
-        }
-        // console.log(todo)
-        return todo
-      })
-
-    case "ADD_SUBTASK":
-      return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
-          return todo.task.map((task_) => {
-            if (task_.id === action.payload.taskId) {
-              return {
-                ...task_,
-                subtask: [...task_.subtask, action.payload.subtask],
-              }
-            }
-            console.log(todo)
-
-            return task_
-          })
+          return {
+            ...todo,
+            task: todo.task.filter(
+              (task_) => task_.id !== action.payload.taskId
+            ),
+          }
         }
         return todo
       })
