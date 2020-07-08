@@ -69,25 +69,6 @@ export default function Profile() {
     setSubTask({ ...subTask, [subTaskName]: "" })
   }
 
-  const handleCheckbox = (todoId, taskId, subtaskId, checked) => {
-    const todo = todoList.filter((todo_) => todo_.id === todoId)
-    const tasks = todo.filter((task) => task.id === taskId)
-
-    let count = 0
-    tasks.forEach((task) => {
-      task.subtask.forEach((subtask) => {
-        if (subtask.checked) {
-          count += 1
-        }
-      })
-    })
-    if (checked) {
-      count += 1
-    }
-
-    dispatch(toogleSubTask(todoId, taskId, subtaskId, checked, count))
-  }
-
   return (
     <>
       <Header id="profile-header" />
@@ -203,11 +184,13 @@ export default function Profile() {
                                 name="tarefa"
                                 id="check-tarefa"
                                 onChange={(e) =>
-                                  handleCheckbox(
-                                    todo.id,
-                                    task.id,
-                                    subtask.id,
-                                    e.target.checked
+                                  dispatch(
+                                    toogleSubTask(
+                                      todo.id,
+                                      task.id,
+                                      subtask.id,
+                                      e.target.checked
+                                    )
                                   )
                                 }
                                 checked={subtask.completed}

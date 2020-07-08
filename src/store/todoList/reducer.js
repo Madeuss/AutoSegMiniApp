@@ -140,8 +140,14 @@ const todoReducer = (state = INITIAL_STATE, action) => {
                     return subtask_
                   }),
                   completed:
-                    task_.subtask.length === action.payload.count
-                      ? true
+                    action.payload.checked === true
+                      ? task_.subtask.filter(
+                          (subtask_) => subtask_.completed === true
+                        ).length +
+                          1 ===
+                        task_.subtask.length
+                        ? true
+                        : false
                       : false,
                 }
               }

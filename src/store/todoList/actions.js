@@ -79,7 +79,7 @@ const toogleTask = (todoId, taskId, checked) => {
     },
   }
 }
-const toogleSubTask = (todoId, taskId, subtaskId, checked, count) => {
+const toogleSubTask = (todoId, taskId, subtaskId, checked) => {
   return {
     type: "TOOGLE_SUBTASK",
     payload: {
@@ -87,7 +87,6 @@ const toogleSubTask = (todoId, taskId, subtaskId, checked, count) => {
       taskId,
       subtaskId,
       checked,
-      count,
     },
   }
 }
