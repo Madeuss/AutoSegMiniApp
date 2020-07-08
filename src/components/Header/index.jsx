@@ -16,7 +16,9 @@ function Header() {
         <img id="profile-marca-img" src={marca_header} alt="marca" />
       </Link>
       <section className="profile-info-section">
-        <img src={avatar} alt="Default profile avatar" />
+        <Link to="/profile">
+          <img src={avatar} alt="Default profile avatar" />
+        </Link>
         <p>{userName}</p>
       </section>
     </Nav>
