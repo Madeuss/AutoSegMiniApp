@@ -26,11 +26,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin-bottom: 10px; */
-}
-
-#taskinput {
-  width: 100%;
 }
 
 .newlist-form .form-buttons-section {
@@ -38,4 +33,25 @@
   justify-content: center;
   align-items: center;
   margin-top: 30px;
+}
+
+.new-todo-list {
+  width: 650px;
+}
+
+.new-tarefa-item,
+.new-tarefa-name-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em;
+  font-family: SF-RG;
+  color: #574437;
+  padding-right: 40px;
+  padding-left: 20px;
+}
+
+.new-tarefa-name-div p {
+  margin-left: 10px;
+  font-size: 0.9em;
 }
