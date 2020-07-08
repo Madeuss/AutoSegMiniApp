@@ -8,8 +8,8 @@ import {
   deleteTask,
   addSubTask,
   deleteSubTask,
-  toogleTask,
-  toogleSubTask,
+  toggleTask,
+  toggleSubTask,
 } from "../../store/todoList"
 
 import Header from "../../components/Header"
@@ -155,7 +155,7 @@ export default function Profile() {
                             id="check-tarefa1"
                             onChange={(e) =>
                               dispatch(
-                                toogleTask(todo.id, task.id, e.target.checked)
+                                toggleTask(todo.id, task.id, e.target.checked)
                               )
                             }
                             checked={task.completed}
@@ -183,7 +183,7 @@ export default function Profile() {
                                 id="check-tarefa"
                                 onChange={(e) =>
                                   dispatch(
-                                    toogleSubTask(
+                                    toggleSubTask(
                                       todo.id,
                                       task.id,
                                       subtask.id,

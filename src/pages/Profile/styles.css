@@ -67,16 +67,13 @@
 
 #list-btns-sec {
   display: flex;
+  align-items: center;
   padding: 15px;
-}
-#list-icon,
-#list-btns-sec #edit-list-icon,
-#delete-list-icon {
-  cursor: pointer;
 }
 
 #list-title-sec p {
-  font-size: 1.2em;
+  font-size: 1.5em;
+  height: 20px;
   margin-left: 10px;
   font-family: SF-RG;
   color: #574437;
