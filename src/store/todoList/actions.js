@@ -1,13 +1,10 @@
-const addTodo = (todoName, id) => {
+const addTodo = (todoName) => {
   return {
     type: "ADD_TODO",
     payload: {
-      id,
-      todo: {
-        id: Math.floor(Math.random() * 10),
-        list: todoName,
-        task: [],
-      },
+      id: Math.floor(Math.random() * 10),
+      list: todoName,
+      task: [],
     },
   }
 }

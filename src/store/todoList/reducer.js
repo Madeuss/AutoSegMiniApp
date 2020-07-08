@@ -28,13 +28,8 @@ const INITIAL_STATE = [
 
 const todoReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    // case "ADD_TODO":
-    //   return state.map((todo) => {
-    //     return {
-    //       ...state,
-    //       todo: [...todo, action.payload.todo],
-    //     }
-    //   })
+    case "ADD_TODO":
+      return [...state, action.payload]
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.payload)
     case "ADD_TASK":
@@ -121,7 +116,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
       })
 
     case "TOOGLE_SUBTASK":
-      console.log(action.payload.count)
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
           return {

@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
 import Header from "../../components/Header"
 import { TaskInput } from "../../components/TaskInput"
 import { Button } from "../../components/Button"
 
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addTodo } from "../../store/todoList"
 
 import "./styles.css"
@@ -17,7 +18,15 @@ import new_item from "../../assets/botao_adicionar.png"
 
 export default function NewList() {
   const dispatch = useDispatch()
-  const todoList = useSelector((state) => state.todoReducer)
+
+  const [todo, setTodo] = useState({ list: "" })
+
+  const addTodo_ = (e, titleTodo) => {
+    e.preventDefault()
+
+    dispatch(addTodo(titleTodo))
+    setTodo({ ...todo, list: "" })
+  }
 
   return (
     <>
@@ -29,9 +38,17 @@ export default function NewList() {
           </div>
         </section>
 
-        <form className="newlist-form">
+        <form className="newlist-form" onSubmit={(e) => addTodo_(e, todo)}>
           <section className="form-inputs-section">
-            <input type="text" placeholder="Digite o nome da lista" />
+            <input
+              type="text"
+              placeholder="Digite o nome da lista"
+              value={todo.list}
+              onChange={(e) => {
+                setTodo(e.target.value)
+              }}
+              required
+            />
             <br />
             <TaskInput id="taskinput">
               <input type="text" placeholder="Adicionar tarefa" />
@@ -39,13 +56,20 @@ export default function NewList() {
             </TaskInput>
           </section>
           <section className="form-buttons-section">
-            <Button backgroundColor="#D3CE3D" fontColor="#574437">
-              Cancelar
-            </Button>
+            <Link to="/profile">
+              <Button
+                type="button"
+                backgroundColor="#D3CE3D"
+                fontColor="#574437"
+              >
+                Cancelar
+              </Button>
+            </Link>
             <Button
               backgroundColor="#EF7734"
               fontColor="#F9F4C2"
               marginLeft={20}
+              type="submit"
             >
               Criar Lista
             </Button>
