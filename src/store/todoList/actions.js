@@ -1,10 +1,10 @@
-const addTodo = (todoName) => {
+const addTodo = (todoName, tasks) => {
   return {
     type: "ADD_TODO",
     payload: {
       id: Math.floor(Math.random() * 10),
       list: todoName,
-      task: [],
+      task: tasks ? tasks : [],
     },
   }
 }
@@ -66,9 +66,9 @@ const deleteSubTask = (todoId, taskId, subTaskId) => {
   }
 }
 
-const toogleTask = (todoId, taskId, checked) => {
+const toggleTask = (todoId, taskId, checked) => {
   return {
-    type: "TOOGLE_TASK",
+    type: "TOGGLE_TASK",
     payload: {
       todoId,
       taskId,
@@ -76,9 +76,9 @@ const toogleTask = (todoId, taskId, checked) => {
     },
   }
 }
-const toogleSubTask = (todoId, taskId, subtaskId, checked) => {
+const toggleSubTask = (todoId, taskId, subtaskId, checked) => {
   return {
-    type: "TOOGLE_SUBTASK",
+    type: "TOGGLE_SUBTASK",
     payload: {
       todoId,
       taskId,
@@ -95,6 +95,6 @@ export {
   deleteTask,
   addSubTask,
   deleteSubTask,
-  toogleTask,
-  toogleSubTask,
+  toggleTask,
+  toggleSubTask,
 }

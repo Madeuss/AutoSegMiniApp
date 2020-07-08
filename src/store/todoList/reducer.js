@@ -28,10 +28,21 @@ const INITIAL_STATE = [
 
 const todoReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    // ----------------------TODO------------------------------
+
+    //Add a new list (todo)
     case "ADD_TODO":
       return [...state, action.payload]
+
+    // console.log(state)
+
+    //Delete a list (todo)
     case "DELETE_TODO":
       return state.filter((todo) => todo.id !== action.payload)
+
+    // ----------------------TASK-------------------------------
+
+    //Add a new task
     case "ADD_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.id) {
@@ -42,6 +53,8 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+
+    //Delete a task
     case "DELETE_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -54,6 +67,10 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+
+    // ----------------------SUBTASK-------------------------------
+
+    //Add a new subtask
     case "ADD_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -73,6 +90,8 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
+
+    //Delete a subtask
     case "DELETE_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -93,7 +112,11 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         }
         return todo
       })
-    case "TOOGLE_TASK":
+
+    // ----------------------TOGGLE -------------------------------
+
+    //toggle the task checkbox
+    case "TOGGLE_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
           return {
@@ -115,7 +138,8 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         return todo
       })
 
-    case "TOOGLE_SUBTASK":
+    //toggle the subtask checkbox
+    case "TOGGLE_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
           return {
