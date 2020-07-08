@@ -51,7 +51,6 @@ export default function Profile() {
   const addTask_ = (e, titleTask, todoId, taskName) => {
     e.preventDefault()
 
-    console.log(todoId, titleTask)
     dispatch(addTask(titleTask, todoId))
     setTask({ ...task, [taskName]: "" })
   }
@@ -64,7 +63,6 @@ export default function Profile() {
   const addSubTask_ = (e, titleSubTask, todoId, taskId, subTaskName) => {
     e.preventDefault()
 
-    console.log(todoId, titleSubTask)
     dispatch(addSubTask(titleSubTask, todoId, taskId))
     setSubTask({ ...subTask, [subTaskName]: "" })
   }
@@ -177,7 +175,7 @@ export default function Profile() {
 
                       <ul className="subtarefas-div">
                         {task.subtask.map((subtask) => (
-                          <li>
+                          <li key={subtask.id}>
                             <div className="subtarefa-name-div">
                               <input
                                 type="checkbox"
