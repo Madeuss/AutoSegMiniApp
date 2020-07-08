@@ -15,16 +15,16 @@ import * as Yup from "yup"
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .required("How may I call you? =)")
-    .min(3, "So short =(")
-    .max(20, "Woow, so long! tell me just your first name or nickname")
-    .notOneOf(["admin", "administrador"], "'-'"),
+    .required("Como eu devo chamá-lo? ")
+    .min(3, "Muito curto =(")
+    .max(20, "Woow, muito grande, me diga somente seu primeiro nome")
+    .notOneOf(["admin", "administrador"], ""),
   email: Yup.string()
-    .required("Email is required")
-    .email("A valid email, please"),
+    .required("Digite seu email")
+    .email("Um email válido, por favor"),
   password: Yup.string()
-    .required("Choose a strong password with 6 characters min ;)")
-    .min(6, "Hmm, try again with 6/more characters"),
+    .required("Escolha um senha forte com no mínimo 6 caracteres ;)")
+    .min(6, "Hmm, tente denovo com 6+ caracteres"),
 })
 
 export default function SignUp() {
@@ -37,7 +37,6 @@ export default function SignUp() {
     },
     validationSchema,
     onSubmit(values) {
-      console.log(values)
       localStorage.setItem("userName", values.name)
       history.push("/profile")
     },
@@ -97,7 +96,6 @@ export default function SignUp() {
               />
               {errors.password ? <Span>{errors.password}</Span> : null}
             </div>
-            {/* <Link > */}
             <Button
               id="sign-btn"
               backgroundColor="#EF7734"
@@ -106,7 +104,6 @@ export default function SignUp() {
             >
               Criar Conta
             </Button>
-            {/* </Link> */}
           </form>
         </section>
       </div>

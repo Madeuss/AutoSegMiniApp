@@ -15,18 +15,22 @@ import * as Yup from "yup"
 //Yup form validation schema
 const validationSchema = Yup.object({
   name: Yup.string()
-    .required("Tell me the name or nick you used on signup =)")
-    .min(3, "Are you sure? That one is so short =(")
-    .max(20, "Woow, so long! tell me just your first name or nickname")
-    .notOneOf(["admin", "administrador"], "Thats me ¬¬"),
+    .required(
+      "Me diga como quer ser chamado =) (tamanho mínimo de 3 caracteres) "
+    )
+    .min(3, "Você tem certeza? me parece muito pequeno")
+    .max(20, "Woow, muito grande, que tal me dizer somente seu primeiro nome")
+    .notOneOf(["admin", "administrador"], "Esse sou eu... ¬¬"),
   password: Yup.string()
-    .required("Write your password that I hope isn't your name")
-    .min(6, "Hmm, try again with 6/more characters"),
+    .required(
+      "Digite sua senha, que eu espero que não seja o seu nome :) (tamanho mínimo de 6 caracteres) "
+    )
+    .min(6, "Hmm, tente denovo com 6 caracteres"),
 })
 
 export default function Login() {
   const history = useHistory()
-  // const [name, setName] = useState("");
+
   const { handleSubmit, handleChange, values, errors } = useFormik({
     initialValues: {
       name: "",
