@@ -9,7 +9,7 @@ export const TaskInput = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-right: 10px;
-  max-width: 100%;
+  width: 500px;
 
   input {
     width: 100%;
@@ -20,5 +20,8 @@ export const TaskInput = styled.div`
     border: none;
     font-family: SF-RG;
     color: #574437;
+  }
+  @media (max-width: 600px) {
+    width: 250px;
   }
 `
