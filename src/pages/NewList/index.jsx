@@ -1,17 +1,12 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 import Header from "../../components/Header"
 import { TaskInput } from "../../components/TaskInput"
 import { Button } from "../../components/Button"
 
-import { useSelector, useDispatch } from "react-redux"
-import {
-  addTodo,
-  deleteTodo,
-  deleteTask,
-  toggleTask,
-} from "../../store/todoList"
+import { useDispatch } from "react-redux"
+import { addTodo } from "../../store/todoList"
 
 import "./styles.css"
 
@@ -23,27 +18,36 @@ import delete_tarefa from "../../assets/icone_deletar_tarefa-subtarefa.png"
 
 export default function NewList() {
   const dispatch = useDispatch()
-  const todoList = useSelector((state) => state.todoReducer)
+  const history = useHistory()
 
   const [tasksName, setTasksName] = useState("")
-  const [todo, setTodo] = useState({ list: "" })
-  const [submited, setSubmited] = useState(false)
+  const [todo, setTodo] = useState("")
+  const [tasks, setTasks] = useState([])
 
-  const addTodo_ = (e, titleTodo, taskName) => {
+  const addTodo_ = (e, titleTodo) => {
     e.preventDefault()
-
-    const tasks = [
-      {
-        id: Math.floor(Math.random() * 100),
-        title: tasksName,
-        completed: false,
-        subtask: [],
-      },
-    ]
 
     dispatch(addTodo(titleTodo, tasks))
     setTasksName("")
-    setSubmited(true)
+    history.push("/profile")
+  }
+
+  const handleAddTask = () => {
+    const currentTask = {
+      id: Math.floor(Math.random() * 100),
+      title: tasksName,
+      completed: false,
+      subtask: [],
+    }
+
+    setTasks([...tasks, currentTask])
+    setTasksName("")
+  }
+
+  const handleDeleteTask = (taskId) => {
+    const finalTasks = tasks.filter((task) => task.id !== taskId)
+
+    setTasks(finalTasks)
   }
 
   return (
@@ -64,7 +68,7 @@ export default function NewList() {
             <input
               type="text"
               placeholder="Digite o nome da lista"
-              value={todo.list}
+              value={todo}
               onChange={(e) => {
                 setTodo(e.target.value)
               }}
@@ -78,7 +82,11 @@ export default function NewList() {
                 value={tasksName}
                 onChange={(e) => setTasksName(e.target.value)}
               />
-              <img src={new_item} alt="new task icon" />
+              <img
+                src={new_item}
+                alt="new task icon"
+                onClick={() => handleAddTask()}
+              />
             </TaskInput>
           </section>
           <section className="form-buttons-section">
@@ -102,68 +110,48 @@ export default function NewList() {
           </section>
         </form>
 
-        <ul className="todo-list new-todo-list">
-          {submited
-            ? todoList.map((todo, index) => (
-                <li key={todo.id} className="list-item">
-                  <div className="lista-div">
-                    <section id="list-title-sec">
-                      <img src={list_icon} alt="List icon" id="list-icon" />
-                      <p>{todo.list}</p>
-                    </section>
-                    <section id="list-btns-sec">
-                      <span>
-                        <img
-                          src={edit_icon}
-                          alt="Edit icon"
-                          id="edit-list-icon"
-                        />
-                      </span>
-                      <span>
-                        <img
-                          src={delete_icon}
-                          alt="Delete icon"
-                          onClick={() => dispatch(deleteTodo(todo.id))}
-                          id="delete-list-icon"
-                        />
-                      </span>
-                    </section>
+        {todo && (
+          <ul className="todo-list new-todo-list">
+            <li className="list-item">
+              <div className="lista-div">
+                <section id="list-title-sec">
+                  <img src={list_icon} alt="List icon" id="list-icon" />
+                  <p>{todo}</p>
+                </section>
+                <section id="list-btns-sec">
+                  <span>
+                    <img src={edit_icon} alt="Edit icon" id="edit-list-icon" />
+                  </span>
+                  <span>
+                    <img
+                      src={delete_icon}
+                      alt="Delete icon"
+                      onClick={() => setTodo("")}
+                      id="delete-list-icon"
+                    />
+                  </span>
+                </section>
+              </div>
+              {tasks.map((task) => (
+                <div key={task.id} className="tarefa-list-section">
+                  <div className="new-tarefa-item">
+                    <div className="new-tarefa-name-div">
+                      <input type="checkbox" name="tarefa" id="check-tarefa1" />
+                      <p>{task.title}</p>
+                    </div>
+                    <span>
+                      <img
+                        src={delete_tarefa}
+                        alt="Delete icon"
+                        onClick={() => handleDeleteTask(task.id)}
+                      />
+                    </span>
                   </div>
-
-                  {/* TASK MAP */}
-                  {todo.task.map((task) => (
-                    <li key={task.id} className="tarefa-list-section">
-                      <div className="new-tarefa-item">
-                        <div className="new-tarefa-name-div">
-                          <input
-                            type="checkbox"
-                            name="tarefa"
-                            id="check-tarefa1"
-                            onChange={(e) =>
-                              dispatch(
-                                toggleTask(todo.id, task.id, e.target.checked)
-                              )
-                            }
-                            checked={task.completed}
-                          />
-                          <p>{task.title}</p>
-                        </div>
-                        <span>
-                          <img
-                            src={delete_tarefa}
-                            alt="Delete icon"
-                            onClick={() =>
-                              dispatch(deleteTask(todo.id, task.id))
-                            }
-                          />
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </li>
-              ))
-            : ""}
-        </ul>
+                </div>
+              ))}
+            </li>
+          </ul>
+        )}
       </div>
     </>
   )
