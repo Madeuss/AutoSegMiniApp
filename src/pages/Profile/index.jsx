@@ -30,6 +30,7 @@ export default function Profile() {
   const todoList = useSelector((state) => state.todoReducer)
   const [task, setTask] = useState({})
   const [subTask, setSubTask] = useState({})
+  const [showinput, setShowInput] = useState(false)
 
   function handlePushAccordion(index) {
     let accordion = todoActive === index ? false : index
@@ -100,7 +101,7 @@ export default function Profile() {
                       <img
                         src={edit_icon}
                         alt="Edit icon"
-                        onClick={() => handlePushAccordion(index)}
+                        onClick={() => setShowInput(!showinput)}
                         id="edit-list-icon"
                       />
                     </span>
@@ -124,10 +125,13 @@ export default function Profile() {
                       addTask_(e, task[todo.list], todo.id, todo.list)
                     }
                   >
-                    <TaskInput id="list-taskinput">
+                    <TaskInput
+                      id="list-taskinput"
+                      style={{ display: showinput ? "flex" : "none" }}
+                    >
                       <input
                         name={todo.list}
-                        value={task[todo.list]}
+                        value={task[todo.list] || ""}
                         onChange={(e) => handleInputChange(e)}
                         type="text"
                         placeholder="Adicionar tarefa"
@@ -223,10 +227,11 @@ export default function Profile() {
                           <div
                             className="input-group"
                             id="subtarefa-input-group"
+                            style={{ display: showinput ? "flex" : "none" }}
                           >
                             <input
                               name={task.title}
-                              value={subTask[task.title]}
+                              value={subTask[task.title] || ""}
                               onChange={(e) => handleSubInputChange(e)}
                               type="text"
                               placeholder="Adicionar subtarefa"
