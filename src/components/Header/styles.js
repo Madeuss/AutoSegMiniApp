@@ -9,10 +9,11 @@ export const Nav = styled.header`
   div {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
     max-width: 650px;
     height: 100px;
+    padding: 20px;
   }
 
   section {
