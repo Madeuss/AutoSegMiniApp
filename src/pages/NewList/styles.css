@@ -14,6 +14,13 @@
   margin-top: 20px;
 }
 
+.form-inputs-section {
+  max-width: 650px;
+}
+.form-inputs-section #taskinput {
+  width: 100%;
+}
+
 .newlist-form input {
   width: 100%;
   height: 35px;
@@ -37,7 +44,7 @@
 }
 
 .new-todo-list {
-  width: 650px;
+  width: 100%;
 }
 
 .new-tarefa-item,
