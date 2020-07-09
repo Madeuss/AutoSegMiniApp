@@ -12,7 +12,6 @@ export const Nav = styled.header`
     justify-content: space-around;
     margin: 0 auto;
     max-width: 650px;
-    border: 1px solid red;
     height: 100px;
   }
 
