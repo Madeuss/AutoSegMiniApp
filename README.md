@@ -51,4 +51,4 @@ Aplicação proposta e desenvolvida como desafio do processo seletivo da [AutoSe
 
 # :point_down:**Link da aplicação hospedada** :point_down:
 
-## https://covidtrackermadeus.firebaseapp.com/
+##
