@@ -45,67 +45,71 @@ export default function SignUp() {
   return (
     <>
       <div className="background-opacity" />
-      <div className="signup-container">
-        <img id="marca-img" src={marca} alt="Devices example" />
+      <div className="background-div">
+        <div className="signup-container">
+          <img id="marca-img" src={marca} alt="Devices example" />
 
-        <section className="signup-section">
-          <Link id="seta" to="/">
-            <img src={backarrow} alt="Back arrow icon" />
-          </Link>
-          <header className="form-header">
-            <img src={camera} alt="Devices example" />
-            <h1>Criar Conta</h1>
-          </header>
+          <section className="signup-section">
+            <Link id="seta" to="/">
+              <img src={backarrow} alt="Back arrow icon" />
+            </Link>
+            <header className="form-header">
+              <img src={camera} alt="Devices example" />
+              <h1>Criar Conta</h1>
+            </header>
 
-          {/* FORM INPUTS */}
-          <form className="signup-form" onSubmit={handleSubmit}>
-            <div className="form-item">
-              <input
-                type="text"
-                name="name"
-                className="contact-input name-input"
-                required
-                placeholder="Nome"
-                value={values.name || ""}
-                onChange={handleChange}
-              />
-              {errors.name ? <Span>{errors.name}</Span> : null}
-            </div>
-            <div className="form-item">
-              <input
-                type="text"
-                name="email"
-                className="contact-input email-input"
-                placeholder="Endereço de e-mail"
-                required
-                value={values.email || ""}
-                onChange={handleChange}
-              />
-              {errors.email ? <Span>{errors.email}</Span> : null}
-            </div>
-            <div className="form-item">
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                className="contact-input password-input"
-                required
-                placeholder="Senha"
-                value={values.password || ""}
-                onChange={handleChange}
-              />
-              {errors.password ? <Span>{errors.password}</Span> : null}
-            </div>
-            <Button
-              id="sign-btn"
-              backgroundColor="#EF7734"
-              fontColor="#F9F4C2"
-              type="submit"
-            >
-              Criar Conta
-            </Button>
-          </form>
-        </section>
+            {/* FORM INPUTS */}
+            <form className="signup-form" onSubmit={handleSubmit}>
+              <div className="form-item">
+                <input
+                  type="text"
+                  name="name"
+                  className="contact-input name-input"
+                  required
+                  placeholder="Nome"
+                  value={values.name || ""}
+                  onChange={handleChange}
+                />
+                {errors.name ? <Span>{errors.name}</Span> : null}
+              </div>
+              <div className="form-item">
+                <input
+                  type="text"
+                  name="email"
+                  className="contact-input email-input"
+                  placeholder="Endereço de e-mail"
+                  required
+                  value={values.email || ""}
+                  onChange={handleChange}
+                />
+                {errors.email ? <Span>{errors.email}</Span> : null}
+              </div>
+              <div className="form-item">
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="new-password"
+                  className="contact-input password-input"
+                  required
+                  placeholder="Senha"
+                  value={values.password || ""}
+                  onChange={handleChange}
+                />
+                {errors.password ? <Span>{errors.password}</Span> : null}
+              </div>
+              <section className="signup-btn-section">
+                <Button
+                  id="sign-btn"
+                  backgroundColor="#EF7734"
+                  fontColor="#F9F4C2"
+                  type="submit"
+                >
+                  Criar Conta
+                </Button>
+              </section>
+            </form>
+          </section>
+        </div>
       </div>
     </>
   )

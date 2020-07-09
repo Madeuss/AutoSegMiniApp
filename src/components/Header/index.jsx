@@ -12,15 +12,17 @@ function Header() {
 
   return (
     <Nav>
-      <Link to="/profile">
-        <img id="profile-marca-img" src={marca_header} alt="marca" />
-      </Link>
-      <section className="profile-info-section">
+      <div>
         <Link to="/profile">
-          <img src={avatar} alt="Default profile avatar" />
+          <img id="profile-marca-img" src={marca_header} alt="marca" />
         </Link>
-        <p>{userName}</p>
-      </section>
+        <section className="profile-info-section">
+          <Link to="/profile">
+            <img src={avatar} alt="Default profile avatar" />
+          </Link>
+          <p>{userName}</p>
+        </section>
+      </div>
     </Nav>
   )
 }

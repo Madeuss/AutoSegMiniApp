@@ -12,17 +12,18 @@
 }
 
 .profile-container {
-  width: 100%;
+  max-width: 650px;
   height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 30px;
+  padding: 30px;
+  margin: 0 auto;
 }
 
 .todo-section {
-  width: 650px;
+  width: 100%;
 }
 
 #new-list-div {
@@ -37,7 +38,7 @@
 
 .todo-list {
   margin: 20px auto 20px auto;
-  border: 0.25px solid #b4d9cb;
+  border: 0.25px solid #b9b4d9;
   border-radius: 5px;
   list-style-type: none;
 }
@@ -104,9 +105,10 @@
   align-items: center;
   justify-content: space-between;
   padding-right: 10px;
+  width: 100%;
 }
 .todo-list li .tarefa-container .input-group input {
-  width: 430px;
+  width: 100%;
   height: 35px;
   padding: 10px;
   border-radius: 4px;
@@ -207,4 +209,11 @@ input:checked {
 
 img {
   cursor: pointer;
+}
+
+@media screen and (max-width: 665) {
+  .todo-list {
+    max-width: 300px;
+    width: 100%;
+  }
 }

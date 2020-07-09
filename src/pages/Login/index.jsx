@@ -47,54 +47,58 @@ export default function Login() {
   return (
     <>
       <div className="background-opacity" />
-      <div className="login-container">
-        <img id="marca-img" src={marca} alt="Devices example" />
+      <div className="background-div">
+        <div className="login-container">
+          <img id="marca-img" src={marca} alt="Devices example" />
 
-        <section className="login-section">
-          <Link id="seta" to="/">
-            <img src={backarrow} alt="Back arrow icon" />
-          </Link>
-          <header className="form-header">
-            <h1>Entrar</h1>
-          </header>
+          <section className="login-section">
+            <Link id="seta" to="/">
+              <img src={backarrow} alt="Back arrow icon" />
+            </Link>
+            <header className="form-header">
+              <h1>Entrar</h1>
+            </header>
 
-          {/* FORM INPUTS */}
-          <form className="login-form" onSubmit={handleSubmit}>
-            <div className="form-item">
-              <input
-                type="text"
-                name="name"
-                className="contact-input name-input"
-                required
-                placeholder="Nome"
-                value={values.name || ""}
-                onChange={handleChange}
-              />
-              {errors.name ? <Span>{errors.name}</Span> : null}
-            </div>
-            <div className="form-item">
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                className="contact-input password-input"
-                required
-                placeholder="Senha"
-                value={values.password || ""}
-                onChange={handleChange}
-              />
-              {errors.password ? <Span>{errors.password}</Span> : null}
-            </div>
-            <Button
-              id="login-btn"
-              type="submit"
-              backgroundColor="#D3CE3D"
-              fontColor="#574437"
-            >
-              Entrar
-            </Button>
-          </form>
-        </section>
+            {/* FORM INPUTS */}
+            <form className="login-form" onSubmit={handleSubmit}>
+              <div className="form-item">
+                <input
+                  type="text"
+                  name="name"
+                  className="contact-input name-input"
+                  required
+                  placeholder="Nome"
+                  value={values.name || ""}
+                  onChange={handleChange}
+                />
+                {errors.name ? <Span>{errors.name}</Span> : null}
+              </div>
+              <div className="form-item">
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="new-password"
+                  className="contact-input password-input"
+                  required
+                  placeholder="Senha"
+                  value={values.password || ""}
+                  onChange={handleChange}
+                />
+                {errors.password ? <Span>{errors.password}</Span> : null}
+              </div>
+              <section className="signup-btn-section">
+                <Button
+                  id="login-btn"
+                  type="submit"
+                  backgroundColor="#D3CE3D"
+                  fontColor="#574437"
+                >
+                  Entrar
+                </Button>
+              </section>
+            </form>
+          </section>
+        </div>
       </div>
     </>
   )

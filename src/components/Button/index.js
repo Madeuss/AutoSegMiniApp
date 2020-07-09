@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Button = styled.button`
   height: 45px;
-  width: 250px;
+  width: 225px;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor};
   border-radius: 5px;
@@ -12,4 +12,8 @@ export const Button = styled.button`
 
   /* margin to buttons with flex display (side by side) */
   margin-left: ${(props) => `${props.marginLeft}px`};
+
+  @media (max-width: 600px) {
+    width: 150px;
+  }
 `

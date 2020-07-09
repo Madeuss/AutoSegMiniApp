@@ -5,9 +5,16 @@ export const Nav = styled.header`
   background-color: #574437;
   height: 100px;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 650px;
+    border: 1px solid red;
+    height: 100px;
+  }
 
   section {
     display: flex;
@@ -20,5 +27,14 @@ export const Nav = styled.header`
     color: #f9f4c2;
     font-family: SF-UL;
     font-size: 20px;
+    text-overflow: ellipsis;
+  }
+
+  #profile-marca-img {
+    width: 200px;
+
+    @media (max-width: 300px) {
+      width: 100%;
+    }
   }
 `
