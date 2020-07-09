@@ -14,11 +14,8 @@
 
 <br>
 
-<p align="center">
-    <img alt="desktop demo" title="desktop_demo_image" src=".github/desktop-image.png" width="550px" height="270px"/>
-</p>
 <h1 align="center">
-    <img alt="search demo gif" title="search_demo_gif" src=".github/search-demo.gif" height="300px" width="250px" />
+    <img alt="desktop demo" title="desktop_demo_image" src=".github/mobDeskmock.png" width="800px" height="270px"/>
 </h1>
 
 ## :rocket: Tecnologias
