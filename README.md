@@ -15,7 +15,7 @@
 <br>
 
 <h1 align="center">
-    <img alt="desktop demo" title="desktop_demo_image" src=".github/mobDeskmock.png" width="500px" height="300px"/>
+    <img alt="desktop demo" title="desktop_demo_image" src=".github/mobDeskmock.png" width="550px" height="300px"/>
 </h1>
 
 ## :rocket: Tecnologias
