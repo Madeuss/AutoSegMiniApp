@@ -5,8 +5,8 @@ const INITIAL_STATE = [
     task: [
       {
         id: "1",
-        title: "task 1",
-        completed: true,
+        title: "Task 1",
+        completed: false,
         subtask: [{ id: "1", title: "Subtask 1", completed: false }],
       },
     ],
@@ -19,7 +19,11 @@ const INITIAL_STATE = [
         id: "2",
         title: "task 2",
         completed: false,
-        subtask: [{ id: "2", title: "Subtask 2", completed: false }],
+        subtask: [
+          { id: "2", title: "Subtask 1", completed: false },
+          { id: "21", title: "Subtask 2", completed: false },
+          { id: "22", title: "Subtask 3", completed: false },
+        ],
       },
     ],
   },
@@ -30,19 +34,15 @@ const todoReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     // ----------------------TODO------------------------------
 
-    //Add a new list (todo)
     case "ADD_TODO":
       return [...state, action.payload]
 
-    // console.log(state)
-
-    //Delete a list (todo)
     case "DELETE_TODO":
-      return state.filter((todo) => todo.id !== action.payload)
+      console.log(state)
+    // return state.filter((todo) => todo.id !== action.payload)
 
     // ----------------------TASK-------------------------------
 
-    //Add a new task
     case "ADD_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.id) {
@@ -54,7 +54,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         return todo
       })
 
-    //Delete a task
     case "DELETE_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -70,7 +69,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
 
     // ----------------------SUBTASK-------------------------------
 
-    //Add a new subtask
     case "ADD_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -91,7 +89,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         return todo
       })
 
-    //Delete a subtask
     case "DELETE_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -115,7 +112,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
 
     // ----------------------TOGGLE -------------------------------
 
-    //toggle the task checkbox
     case "TOGGLE_TASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
@@ -138,7 +134,6 @@ const todoReducer = (state = INITIAL_STATE, action) => {
         return todo
       })
 
-    //toggle the subtask checkbox
     case "TOGGLE_SUBTASK":
       return state.map((todo) => {
         if (todo.id === action.payload.todoId) {
