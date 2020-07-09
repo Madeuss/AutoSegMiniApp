@@ -21,21 +21,21 @@
 ## :rocket: Tecnologias
 
 - [ReactJS](https://reactjs.org)
-- [Redux]()
-- [Yup]()
-- [Formik]()
-- [Styled Component]()
+- [Redux](https://redux.js.org/)
+- [Yup](https://github.com/jquense/yup)
+- [Formik](https://formik.org/docs/overview)
+- [Styled Component](https://styled-components.com/)
 
 ## 💻 Projeto
 
-Aplicação proposta e desenvolvida como desafio do processo seletivo da [AutoSeg](). Trata-se de um todo app utilizando ReactJS e Redux como principais tecnologias :)
+Aplicação proposta e desenvolvida como desafio do processo seletivo da [AutoSeg](https://www.autoseg.com/). Trata-se de um todo app utilizando ReactJS e Redux como principais tecnologias :)
 
 ## 📚 Principais conceitos abordados e aprendidos
 
 - Validação de formulários utilizando bibliotecas como yup e formik
 - Uso de Redux para criação de um state global
 - Manipulação do state de acordo com actions
-- Persistindo store com [redux persist]()
+- Persistindo store com [redux persist](https://github.com/rt2zz/redux-persist)
 
 ## 🤔 Configuração do projeto
 
@@ -48,4 +48,4 @@ Aplicação proposta e desenvolvida como desafio do processo seletivo da [AutoSe
 
 # :point_down:**Link da aplicação hospedada** :point_down:
 
-##
+## https://autosegtodoapp.herokuapp.com/
