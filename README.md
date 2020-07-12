@@ -24,7 +24,7 @@
 - [Redux](https://redux.js.org/)
 - [Yup](https://github.com/jquense/yup)
 - [Formik](https://formik.org/docs/overview)
-- [Styled Component](https://styled-components.com/)
+- [Styled Components](https://styled-components.com/)
 
 ## 💻 Projeto
 
