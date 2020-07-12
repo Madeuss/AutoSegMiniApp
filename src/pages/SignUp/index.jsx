@@ -62,6 +62,7 @@ export default function SignUp() {
             <form className="signup-form" onSubmit={handleSubmit}>
               <div className="form-item">
                 <input
+                  cypress-test-id="inputnamesignup"
                   type="text"
                   name="name"
                   className="contact-input name-input"
@@ -74,6 +75,7 @@ export default function SignUp() {
               </div>
               <div className="form-item">
                 <input
+                  cypress-test-id="inputemailsignup"
                   type="text"
                   name="email"
                   className="contact-input email-input"
@@ -86,6 +88,7 @@ export default function SignUp() {
               </div>
               <div className="form-item">
                 <input
+                  cypress-test-id="inputpasswordsignup"
                   type="password"
                   name="password"
                   autoComplete="new-password"
