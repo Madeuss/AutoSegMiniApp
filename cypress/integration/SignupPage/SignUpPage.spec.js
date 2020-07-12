@@ -14,4 +14,9 @@ describe("SignUp Page components", () => {
     //click to submit
     cy.get(".signup-btn-section").find("#sign-btn").click()
   })
+
+  it("Should return true when the user name is showed in the header", () => {
+    //verify if the user name is showing in the profile page
+    cy.contains("Mateus").should("to.have.length", 1)
+  })
 })
