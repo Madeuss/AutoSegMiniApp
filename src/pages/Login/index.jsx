@@ -63,6 +63,7 @@ export default function Login() {
             <form className="login-form" onSubmit={handleSubmit}>
               <div className="form-item">
                 <input
+                  cypress-test-id="inputnamelogin"
                   type="text"
                   name="name"
                   className="contact-input name-input"
@@ -75,6 +76,7 @@ export default function Login() {
               </div>
               <div className="form-item">
                 <input
+                  cypress-test-id="inputpasswordlogin"
                   type="password"
                   name="password"
                   autoComplete="new-password"
